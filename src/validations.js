@@ -2,18 +2,18 @@ import * as yup from 'yup';
 
 const validations = yup.object().shape({
     name: yup.string()
-        .min(1, 'Too short')
-        .max(20, 'Too long')
-        .required('Required'),
+        .min(2, 'Name is too short')
+        .max(20, 'Name is too long')
+        .required('Name is required'),
     email: yup.string()
         .email('Invalid email')
-        .required('Required'),
+        .required('Email is required'),
     occupation: yup.string()
-        .test('county', 'cannot be empty', value => value !== 'Please Select')
-        .required('required'),
+        .test('county', 'Select a value', value => value !== 'Please Select')
+        .required('Occupation is required'),
     message: yup.string()
-        .required('required'),
-    terms: yup.string()
+        .required('Message is required'),
+    terms: yup.boolean()
         .test('terms', 'you must agree to terms', value => value !== false)
         .required('required')
 })
